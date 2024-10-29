@@ -6,7 +6,7 @@ test.describe("Widget tests", () => {
   }) => {
     await test.step("Login to project", async () => {
       await page.goto(
-        `https://www.tidio.com/panel/?project_public_key=${process.env.PROJECT_PUBLIC_KEY}&api_token=${process.env.API_TOKEN}`
+        `${process.env.BASE_URL}panel/?project_public_key=${process.env.PROJECT_PUBLIC_KEY}&api_token=${process.env.API_TOKEN}`
       );
     });
     await test.step("Simulate visitor and send message from widget to panel", async () => {

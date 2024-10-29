@@ -8,6 +8,7 @@ require("dotenv").config();
  */
 const config: PlaywrightTestConfig = {
   testDir: "./tests",
+  globalSetup: require.resolve('./src/global-setup.ts'),
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {

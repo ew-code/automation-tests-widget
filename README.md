@@ -43,3 +43,7 @@ Add the two missing steps to the test. In the first step click on the button "Si
 Use a docker to containerize project. Use the official Playwright Docker image or build a custom image. Include information how to run test from the docker side in the readme.
 
 Good luck!
+
+## My Task Implementation - Creator: Ewelina Wesołowska
+
+The detailed steps of the task execution, documented by me as part of the recruitment process, are available in the [EXECUTION_STEPS.md](EXECUTION_STEPS.md).
