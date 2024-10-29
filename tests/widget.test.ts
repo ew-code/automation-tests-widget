@@ -1,16 +1,18 @@
 import { test } from "@playwright/test";
+import { PanelPage } from "../src/pages/panel.page";
 
 test.describe("Widget tests", () => {
   test("Send message from widget to panel and from panel to widget", async ({
     page,
   }) => {
+    const panelPage = new PanelPage(page);
+
     await test.step("Login to project", async () => {
-      await page.goto(
-        `${process.env.BASE_URL}panel/?project_public_key=${process.env.PROJECT_PUBLIC_KEY}&api_token=${process.env.API_TOKEN}`
-      );
+      await panelPage.loginToProject();
     });
+
     await test.step("Simulate visitor and send message from widget to panel", async () => {
-      await page.locator('[data-test-id="inbox-section-button"]').click();
+      await panelPage.goToInboxSection();
       //TODO
     });
     await test.step("Send a reply message from the panel", async () => {
