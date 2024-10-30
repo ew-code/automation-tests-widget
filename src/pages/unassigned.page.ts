@@ -1,5 +1,4 @@
 import { BasePage } from "./base.page";
-
 export class UnassignedPage extends BasePage {
   url = `${process.env.BASE_URL}/panel/inbox/conversations/unassigned/`;
 

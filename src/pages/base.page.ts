@@ -1,5 +1,4 @@
 import { Page } from "@playwright/test";
-
 export class BasePage {
   url = "";
   constructor(protected page: Page) {}

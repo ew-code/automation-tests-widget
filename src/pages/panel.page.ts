@@ -1,6 +1,5 @@
 import { Page } from "@playwright/test";
 import { BasePage } from "./base.page";
-
 export class PanelPage extends BasePage {
   url = `${process.env.BASE_URL}/panel/`;
   inboxSectionButton = this.page.locator(

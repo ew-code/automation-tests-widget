@@ -1,7 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { PanelPage } from "../src/pages/panel.page";
 import { SimulateVisitorPage } from "../src/pages/simulateVisitor.page";
-import { faker } from "@faker-js/faker";
 import { UnassignedPage } from "../src/pages/unassigned.page";
 import { testData } from "../src/test-data/test.data";
 

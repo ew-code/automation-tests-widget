@@ -1,6 +1,5 @@
 import { FrameLocator } from "@playwright/test";
 import { BasePage } from "./base.page";
-
 export class SimulateVisitorPage extends BasePage {
   url = `${process.env.BASE_URL}/panel/simulateVisitor`;
   simulateConversationButton = this.page.getByRole("button", {
