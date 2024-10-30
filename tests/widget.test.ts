@@ -18,15 +18,21 @@ test.describe("Widget tests", () => {
 
     await test.step("Simulate visitor and send message from widget to panel", async () => {
       await panelPage.goToInboxSection();
-      //TODO
       const popup = await simulateVisitorPage.openConversationPopup();
-      await simulateVisitorPage.closeChatWidget(popup);
+      await simulateVisitorPage.closeChatbot(popup);
       await simulateVisitorPage.sendNewMessage(popup, visitorMessage, email);
-      
+      // www.tidio.com/panel/inbox/conversations/unassigned/7686e72ddf274a37b5db6c965a8dda9d
+      await page.getByRole("button", { name: "Go to Unassigned" }).click();
+      await page.getByRole("button", { name: "👋   Unassigned 1" }).click();
+      await page.locator("#app-content").getByText(visitorMessage).click();
+      await expect(page.locator("#app-content").getByText(visitorMessage)).toBeVisible();
     });
 
     await test.step("Send a reply message from the panel", async () => {
-      // TODO: Dodaj kod wysyłania odpowiedzi z panelu
+      await page.getByRole("button", { name: "Join conversation" }).click();
+      await page.locator('[data-test-id="new-message-textarea"]').fill("response for message text sample");
+      await page.getByRole("button", { name: "Reply" }).click();
+      await expect(page.locator("#app-content").getByText("response for message text")).toBeVisible();
     });
   });
 });
