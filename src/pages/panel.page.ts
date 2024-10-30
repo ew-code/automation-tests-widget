@@ -19,4 +19,5 @@ export class PanelPage extends BasePage {
     const parameters = `?project_public_key=${process.env.PROJECT_PUBLIC_KEY}&api_token=${process.env.API_TOKEN}`;
     await this.goto(parameters);
   }
+
 }
