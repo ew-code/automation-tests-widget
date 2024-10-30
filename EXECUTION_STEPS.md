@@ -50,12 +50,22 @@ yarn
 yarn playwright install
 ```
 
-### 4. Implement and Refactor Tests
+### 4. Install Faker.js Library
+
+To generate fake data in tests, the `@faker-js/faker` library has been installed as a development dependency. You can install it with the following command:
+
+```bash
+npm install --save-dev @faker-js/faker
+```
+
+This library helps generate random data, such as names, emails, and addresses, which can be useful for testing various input fields and scenarios.
+
+### 5. Implement and Refactor Tests
 
 - Create page objects using the Page Object Model (POM) and add the first test.
 - Refactor the tests to improve readability and modularity.
 
-### 5. Docker
+### 6. Docker
 
 If you'd like to run the tests in a Docker container, follow these steps:
 
@@ -74,4 +84,4 @@ If you'd like to run the tests in a Docker container, follow these steps:
 
 > The `docker run --rm` command executes the container once and automatically removes it after completion.
 
-   ---
+---
