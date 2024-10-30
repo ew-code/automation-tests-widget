@@ -1,6 +1,6 @@
 import { BasePage } from "./base.page";
 
-export class unassignedPage extends BasePage {
+export class UnassignedPage extends BasePage {
   url = `${process.env.BASE_URL}/panel/inbox/conversations/unassigned/`;
 
   joinConversationButton = this.page.getByRole("button", {name: "Join conversation",});
@@ -14,5 +14,11 @@ export class unassignedPage extends BasePage {
 
   async navigateTo() {
     await this.page.goto(this.url);
+  }
+
+  async replyToVisitorMessage(response: string) {
+    await this.joinConversationButton.click();
+    await this.newMessageTextarea.fill(response);
+    await this.replyButton.click();
   }
 }

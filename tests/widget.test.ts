@@ -3,6 +3,7 @@ import { PanelPage } from "../src/pages/panel.page";
 import { SimulateVisitorPage } from "../src/pages/simulateVisitor.page";
 import { faker } from "@faker-js/faker";
 import { UnassignedPage } from "../src/pages/unassigned.page";
+import { testData } from "../src/test-data/test.data";
 
 test.describe("Widget tests", () => {
   test("Send message from widget to panel and from panel to widget", async ({
@@ -11,9 +12,10 @@ test.describe("Widget tests", () => {
     const panelPage = new PanelPage(page);
     const simulateVisitorPage = new SimulateVisitorPage(page);
     const unassignedPage = new UnassignedPage(page);
-    const visitorMessage = `Fun fact: A ${faker.hacker.noun()} can ${faker.hacker.verb()} like a ${faker.animal.type()}!`;
-    const email = "recruitment+ewelina.w@tidio.net";
-    const responseMessage = `Haha, only if it's faster than my ${faker.animal.type()}!`;
+
+    const visitorMessage = testData.visitorMessage();
+    const email = testData.email;
+    const responseMessage = testData.responseMessage();
 
     await test.step("Login to project", async () => {
       await panelPage.loginToProject();
@@ -25,13 +27,13 @@ test.describe("Widget tests", () => {
       await simulateVisitorPage.closeChatWidget(popup);
       await simulateVisitorPage.sendNewMessage(popup, visitorMessage, email);
       await unassignedPage.navigateTo();
-      await expect(unassignedPage.appContent.getByText(visitorMessage)).toBeVisible();
+      await expect(
+        unassignedPage.appContent.getByText(visitorMessage)
+      ).toBeVisible();
     });
 
     await test.step("Send a reply message from the panel", async () => {
-      await unassignedPage.joinConversationButton.click();
-      await unassignedPage.newMessageTextarea.fill(responseMessage);
-      await unassignedPage.replyButton.click();
+      await unassignedPage.replyToVisitorMessage(responseMessage);
       await expect(unassignedPage.appContent.getByText(responseMessage)).toBeVisible();
     });
   });
