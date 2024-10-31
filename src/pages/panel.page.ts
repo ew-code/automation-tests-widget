@@ -1,10 +1,9 @@
 import { Page } from "@playwright/test";
 import { BasePage } from "./base.page";
+
 export class PanelPage extends BasePage {
   url = `${process.env.BASE_URL}/panel/`;
-  inboxSectionButton = this.page.locator(
-    '[data-test-id="inbox-section-button"]'
-  );
+  inboxSectionButton = this.page.locator('[data-test-id="inbox-section-button"]');
 
   constructor(protected page: Page) {
     super(page);

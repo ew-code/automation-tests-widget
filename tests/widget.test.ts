@@ -26,14 +26,13 @@ test.describe("Widget tests", () => {
       await simulateVisitorPage.closeChatWidget(popup);
       await simulateVisitorPage.sendNewMessage(popup, visitorMessage, email);
       await unassignedPage.navigateTo();
-      await expect(
-        unassignedPage.appContent.getByText(visitorMessage)
-      ).toBeVisible();
+      await expect(unassignedPage.appContent.getByText(visitorMessage)).toBeVisible();
     });
 
     await test.step("Send a reply message from the panel", async () => {
       await unassignedPage.replyToVisitorMessage(responseMessage);
       await expect(unassignedPage.appContent.getByText(responseMessage)).toBeVisible();
+      await unassignedPage.solveButton.click();
     });
   });
 });

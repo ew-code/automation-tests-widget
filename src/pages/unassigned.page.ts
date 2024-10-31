@@ -1,4 +1,5 @@
 import { BasePage } from "./base.page";
+
 export class UnassignedPage extends BasePage {
   url = `${process.env.BASE_URL}/panel/inbox/conversations/unassigned/`;
 
@@ -6,6 +7,7 @@ export class UnassignedPage extends BasePage {
   newMessageTextarea = this.page.locator('[data-test-id="new-message-textarea"]');
   replyButton = this.page.getByRole("button", { name: "Reply" });
   appContent = this.page.locator("#app-content");
+  solveButton = this.page.getByRole("button", { name: "Solve", exact: true });
 
   constructor(protected page: Page) {
     super(page);
